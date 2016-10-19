@@ -1,11 +1,9 @@
-#include "Knapsack.hpp"
+#include "Knapsack.h"
 
-Knapsack::Knapsack(int population_size, int limit, vector<int> values,
-		vector<int> weights, double pc, double pm) :
-		GA<bool>(population_size, weights.size(), pc, pm) {
-	this->limit = limit;
-	this->weights = weights;
-	this->values = values;
+Knapsack::Knapsack(int iterations_count, int population_size, int limit,
+		const vector<int>& values, const vector<int>& weights, double pc, double pm) :
+		GA<bool>(iterations_count, population_size, weights.size(), pc, pm), limit(
+				limit), weights(weights), values(values) {
 }
 
 bool Knapsack::mutate_gene(bool gene) {
@@ -42,10 +40,3 @@ void Knapsack::crossover() {
 	}
 }
 
-int Knapsack::decode(Chromosome chromosome) {
-	int val = 0;
-	for (int i = 0; i < this->chromosome_size; i++) {
-		val += chromosome[i] * (values[i]);
-	}
-	return val;
-}
