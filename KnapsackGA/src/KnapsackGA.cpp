@@ -6,10 +6,12 @@
 using namespace std;
 
 int main() {
+	freopen("in.txt", "r", stdin);
+	freopen("out.txt", "w", stdout);
+
 	srand(time(NULL));
 	int n;
 	cin >> n;
-	cout << " ---- ";
 	for (int f = 1; f <= n; f++) {
 		int num, limit;
 		cin >> num >> limit;
@@ -18,7 +20,7 @@ int main() {
 		for (int i = 0; i < num; i++)
 			cin >> weights[i] >> values[i];
 
-		Knapsack<bool> test(1000, limit, values, weights, 0.5, 0.6);
+		Knapsack test(1000, limit, values, weights, 0.5, 0.6);
 		cout << "Case " << f << ": " << test.run() << endl;
 	}
 	return 0;
