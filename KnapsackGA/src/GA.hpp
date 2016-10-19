@@ -56,7 +56,7 @@ void GA<GeneType>::selection() {
 	int gene1 = upper_bound(cummulative, cummulative + pop_sz, rand1) - cummulative;
 
 	int rand2 = rand() % (cummulative[pop_sz - 1] - fitness_value[gene1]);
-	if(rand2 < cummulative[gene1] && (!gene1 || rand2 >= cummulative[gene1]))
+	if(rand2 < cummulative[gene1] && (!gene1 || rand2 >= cummulative[gene1 - 1]))
 		rand2 += fitness_value[gene1];
 	int gene2 = upper_bound(cummulative, cummulative + pop_sz, rand2) - cummulative;
 
